@@ -3,13 +3,13 @@
  */
 package org.maxkey.authz.endpoint;
 
-import org.maxkey.config.ApplicationConfig;
+import org.maxkey.configuration.ApplicationConfig;
 import org.maxkey.crypto.ReciprocalUtils;
-import org.maxkey.dao.service.AccountsService;
-import org.maxkey.dao.service.AppsService;
 import org.maxkey.domain.Accounts;
 import org.maxkey.domain.UserInfo;
 import org.maxkey.domain.apps.Apps;
+import org.maxkey.persistence.service.AccountsService;
+import org.maxkey.persistence.service.AppsService;
 import org.maxkey.web.WebContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,12 +40,13 @@ public class AuthorizeBaseEndpoint {
 		Apps  app=(Apps)WebContext.getAttribute(AuthorizeBaseEndpoint.class.getName());
 		//session中为空或者id不一致重新加载
 		if(app==null||!app.getId().equalsIgnoreCase(id)) {
-			app=appsService.get(id);		
+			app=appsService.get(id);
+			WebContext.setAttribute(AuthorizeBaseEndpoint.class.getName(), app);
 		}
 		if(app	==	null){
 			_logger.error("Applications for id "+id + "  is null");
 		}
-		WebContext.setAttribute(AuthorizeBaseEndpoint.class.getName(), app);
+		
 		return app;
 	}
 	

@@ -1,10 +1,11 @@
 package org.maxkey;
 
 import java.util.Date;
+
 import javax.servlet.ServletException;
 import org.apache.ibatis.io.VFS;
 import org.apache.mybatis.jpa.SpringBootVFS;
-import org.maxkey.config.ApplicationConfig;
+import org.maxkey.configuration.ApplicationConfig;
 import org.maxkey.web.InitializeContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,5 +44,13 @@ public class MaxKeyApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(MaxKeyApplication.class);
     }
+    
+    /*@Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+        servletContext.setSessionTrackingModes(Collections.singleton(SessionTrackingMode.COOKIE));
+        SessionCookieConfig sessionCookieConfig = servletContext.getSessionCookieConfig();
+        sessionCookieConfig.setHttpOnly(true);
+    }*/
 
 }

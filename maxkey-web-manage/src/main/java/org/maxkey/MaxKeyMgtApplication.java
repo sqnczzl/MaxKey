@@ -3,7 +3,7 @@ package org.maxkey;
 import java.util.Date;
 import javax.servlet.ServletException;
 
-import org.maxkey.config.ApplicationConfig;
+import org.maxkey.configuration.ApplicationConfig;
 import org.maxkey.web.InitializeContext;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
@@ -22,7 +22,7 @@ import org.springframework.context.annotation.ImportResource;
     "org.maxkey.MaxKeyMgtConfig",
     "org.maxkey.MaxKeyMgtMvcConfig",
     "org.maxkey.web.interceptor",
-    "org.maxkey.config",
+    "org.maxkey.configuration",
     "org.maxkey.domain",
     "org.maxkey.domain.apps",
     "org.maxkey.domain.userinfo",
@@ -31,11 +31,14 @@ import org.springframework.context.annotation.ImportResource;
     "org.maxkey.web.apps.contorller",
     "org.maxkey.web.endpoint",
     "org.maxkey.authn",
-    "org.maxkey.dao",
+    "org.maxkey.persistence",
     "org.maxkey.web",
-    "org.maxkey.web.tag"
+    "org.maxkey.web.tag",
+    "org.maxkey.identity.kafka",
+    "org.maxkey.identity.scim.controller",
+    "org.maxkey.identity.rest"
 })
-@MapperScan("org.maxkey.dao.persistence,")
+@MapperScan("org.maxkey.persistence.mapper,")
 public class MaxKeyMgtApplication extends SpringBootServletInitializer {
 	private static final Logger _logger = LoggerFactory.getLogger(MaxKeyMgtApplication.class);
 

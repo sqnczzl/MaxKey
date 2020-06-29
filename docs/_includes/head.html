@@ -1,8 +1,8 @@
 <head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content="MaxKey v1.3.0" />
-		<title>MaxKey is Access Management System-Single Sign On(SSO)</title>
+		<meta name="generator" content="MaxKey v2.0.0" />
+		<title id="maxkey_title">MaxKey is leading-edge Identity and Access Management System-Single Sign On(SSO)</title>
 		
 		<link rel="shortcut icon" type="image/x-icon" href="{{ "/images/favicon.ico" | prepend: site.baseurl }}?{{ site.time | date: "%Y%m%d%H%M" }}" title="MaxKey">
         <!-- syntax highlighting CSS -->
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
-		
+		 
 		<script>
 			var _hmt = _hmt || [];
 			(function() {
@@ -27,6 +27,15 @@
 			  var s = document.getElementsByTagName("script")[0]; 
 			  s.parentNode.insertBefore(hm, s);
 			})();
+			
+			currentLang = navigator.language;   //判断除IE外其他浏览器使用语言
+			if(!currentLang){//判断IE浏览器使用语言
+				currentLang = navigator.browserLanguage;
+			}
+			
+			if(currentLang.substr(0,2).toLowerCase()=="zh"){
+				document.getElementById("maxkey_title").innerHTML="MaxKey-业界领先的企业级IAM身份管理和身份认证产品";
+			}
 		</script>
 
 

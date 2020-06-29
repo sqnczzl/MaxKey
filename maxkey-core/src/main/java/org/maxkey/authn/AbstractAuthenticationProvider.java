@@ -2,7 +2,7 @@ package org.maxkey.authn;
 
 import org.maxkey.authn.realm.AbstractAuthenticationRealm;
 import org.maxkey.authn.support.rememberme.AbstractRemeberMeService;
-import org.maxkey.config.ApplicationConfig;
+import org.maxkey.configuration.ApplicationConfig;
 import org.maxkey.constants.ConstantsLoginType;
 import org.maxkey.crypto.password.PasswordReciprocal;
 import org.maxkey.crypto.password.opt.AbstractOptAuthn;
@@ -123,8 +123,11 @@ public abstract class AbstractAuthenticationProvider {
      */
     protected void sessionValid(String sessionId) {
         if (sessionId == null || !sessionId.equals(WebContext.getSession().getId())) {
-            String message = WebContext.getI18nValue("login.error.session");
             _logger.debug("login session valid error.");
+            _logger.debug("login session sessionId " + sessionId);
+            _logger.debug("login getSession sessionId " + WebContext.getSession().getId());
+            
+            String message = WebContext.getI18nValue("login.error.session");
             throw new BadCredentialsException(message);
         }
     }
